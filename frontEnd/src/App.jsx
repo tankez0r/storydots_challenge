@@ -1,0 +1,36 @@
+import NavBar from "./components/NavBar"
+import Index from "./components/index/Index"
+import Login from "./components/Login/login";
+import AdminDashboard from "./components/adminDashboard/AdminDashboard";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import FormularioContainer from "./components/adminDashboard/FormularioContainer";
+import SelectProduct from "./components/adminDashboard/SelectProduct";
+import Cuatrocerocuatro from "./components/CuatroceroCuatro";
+function App() {
+const token = localStorage.getItem("token");
+  return (
+    <BrowserRouter>
+    <div>
+<NavBar />
+     <Routes>
+     <Route path="/" element={ <Index/>} />
+       {token? 
+       <> <Route path="/dashboard" element={<AdminDashboard/>}/>
+       <Route path="/forms" element={<FormularioContainer/>} />
+       <Route path="/editable" element={<SelectProduct/>} />
+       </>
+      : <Route path="/login" element={<Login/>} />
+       }
+       <Route path="*" element={<Cuatrocerocuatro/>}/>
+       
+        
+        
+        
+      </Routes>
+      </div>
+      </BrowserRouter>
+  
+  )
+}
+
+export default App
