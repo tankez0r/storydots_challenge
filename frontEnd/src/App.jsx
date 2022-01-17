@@ -3,7 +3,7 @@ import Index from "./components/index/Index"
 import Login from "./components/Login/login";
 import AdminDashboard from "./components/adminDashboard/AdminDashboard";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import FormularioContainer from "./components/adminDashboard/FormularioContainer";
+import FormularioMain from "./components/adminDashboard/FormularioMain";
 import SelectProduct from "./components/adminDashboard/SelectProduct";
 import Cuatrocerocuatro from "./components/CuatroceroCuatro";
 function App() {
@@ -16,7 +16,7 @@ const token = localStorage.getItem("token");
      <Route path="/" element={ <Index/>} />
        {token? 
        <> <Route path="/dashboard" element={<AdminDashboard/>}/>
-       <Route path="/forms" element={<FormularioContainer/>} />
+       <Route path="/forms" element={<FormularioMain/>} />
        <Route path="/editable" element={<SelectProduct/>} />
        </>
       : <Route path="/login" element={<Login/>} />

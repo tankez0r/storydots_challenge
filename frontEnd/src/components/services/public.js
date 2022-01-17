@@ -5,8 +5,16 @@ const token = localStorage.getItem('token');
 const config = {
   headers: {
     'Authorization': 'Bearer ' + token
+
   },
 };
+
+
+
+
+
+
+
 
 export const queryGetAll = async (section, setState) => {
   const url = `http://localhost:3002/api/${section}/`;
@@ -83,3 +91,7 @@ export const queryDeleteData = async (section, queryObject) => {
     console.log(error);
   }
 };
+
+
+
+

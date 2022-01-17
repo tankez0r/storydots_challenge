@@ -1,9 +1,15 @@
-import { ErrorMessage } from "formik";
+import { ErrorMessage, Form } from "formik";
+import FormImagenes from "./FormImagenes";
 
-const FormProducto = ({formik}) => {
+
+const FormProducto = ({formik, mode}) => {
     const Marcas =[{nombre:"marca1", id:1}, {nombre:"marca2", id:2}, {nombre:"marca3", id:3}, {nombre:"marca4", id:4}]
    const opciones = Marcas.map(marca => <option key={marca.id} value={marca.id}>{marca.nombre}</option>)
     return ( 
+        <div className="grid col-start-2">
+        <Form onSubmit={formik.handleSubmit} type={'form'} 
+     className="lg:flex ">
+         <div className="bg-slate-300 my-2 p-6 shadow-2xl rounded-lg mx-4">
         <div className="bg-slate-500 my-2 p-6 shadow-2xl rounded-lg mx-4 md:col-start-2 col-span-2">
             <div className="">
         <div className="my-5 flex flex-col">
@@ -31,6 +37,20 @@ const FormProducto = ({formik}) => {
         </div>
         </div>
         </div>
+        </div>
+       <div className="my-2 col-span-2 md:col-start-4 bg-slate-300 p-6 shadow-2xl rounded-lg mx-4"> 
+     <FormImagenes formik={formik}/>
+     <div className=" text-amber-50 grid grid-cols-5 ">
+       { mode==='creation'? <button type="submit" className="col-start-2 col-span-3 bg-slate-700 mt-2 shadow-md transition-all transform active:translate-y-1 hover:shadow-slate-400">Crear</button>:  
+       <><button  type="submit" className="col-start-2 col-span-3 bg-slate-700 mt-2 shadow-md transition-all transform active:translate-y-1 hover:shadow-slate-400">Editar</button>
+        <button onClick={e=>{e.preventDefault(); deleteObject()}} type="button" className="col-start-2 col-span-3 bg-red-700 mt-5 shadow-md transition-all transform active:translate-y-1 hover:shadow-slate-400">Eliminar</button></>}
+        
+
+        </div>
+     </div>
+     </Form> 
+     </div>
+     
      );
 }
  

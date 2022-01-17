@@ -1,14 +1,14 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useLayoutEffect } from "react";
 
 
 const AppContextProvider = createContext();
 
 const AppContext = ({ children }) => {
 const [ContentLoaded, setContentLoaded] = useState(false)
-useEffect(() => {
+useLayoutEffect(() => {
 
 window.addEventListener("load", e=>{
-
+  console.log(e)
     setContentLoaded(true)  
 
 })

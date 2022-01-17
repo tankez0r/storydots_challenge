@@ -1,10 +1,14 @@
 import Card from "./Card";
 import { useEffect, useState } from "react";
-import { queryGetAll } from "../services/public";
+import { queryGetAll  } from "../services/public";
+
+
 const CardContainer = () => {
-const [Cards, setCards] = useState(["asd"])
+const [Cards, setCards] = useState([])
+
 useEffect(() => {
-  queryGetAll('productos', setCards);
+
+queryGetAll('productos', setCards);
 }, [])
 console.log(Cards)
 
