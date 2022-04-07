@@ -29,6 +29,7 @@ useState({form:"" ,nombre:"", descripcion:"", precio:0, marca_id:0,
         if(type){
           queryGetData(type, id, setInitialValues)
         }
+
         if(isSubmited){
          if(ProductoData ){
           queryPostEditData("productos", {...ProductoData, id})
@@ -39,7 +40,6 @@ useState({form:"" ,nombre:"", descripcion:"", precio:0, marca_id:0,
          } 
          else if(MarcaData){
           queryPostEditData("marcas", MarcaData)
-          setFormState(null)
           alert("Marca Editada")
           setTimeout(() => {
             window.location.href = "/dashboard"
@@ -47,7 +47,9 @@ useState({form:"" ,nombre:"", descripcion:"", precio:0, marca_id:0,
          }
         }
          
-        }, [MarcaData, ProductoData, type])
+        }, [MarcaData, ProductoData, type, ])
+
+     
 
     const deleteObject = ()=>{
         if(confirm("Eliminar Marca/Producto?")){

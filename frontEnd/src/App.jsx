@@ -6,6 +6,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import FormularioMain from "./components/adminDashboard/FormularioMain";
 import SelectProduct from "./components/adminDashboard/SelectProduct";
 import Cuatrocerocuatro from "./components/CuatroceroCuatro";
+import Enblanco from "./components/index/Enblanco";
 function App() {
 const token = localStorage.getItem("token");
   return (
@@ -18,6 +19,7 @@ const token = localStorage.getItem("token");
        <> <Route path="/dashboard" element={<AdminDashboard/>}/>
        <Route path="/forms" element={<FormularioMain/>} />
        <Route path="/editable" element={<SelectProduct/>} />
+       <Route path="/enblanco" element={<Enblanco></Enblanco>} />
        </>
       : <Route path="/login" element={<Login/>} />
        }

@@ -1,9 +1,16 @@
 import { ErrorMessage, Form } from "formik";
+import { useState, useEffect } from "react";
+import { queryGetAll } from "../services/public";
 import FormImagenes from "./FormImagenes";
 
 
 const FormProducto = ({formik, mode}) => {
-    const Marcas =[{nombre:"marca1", id:1}, {nombre:"marca2", id:2}, {nombre:"marca3", id:3}, {nombre:"marca4", id:4}]
+const [Marcas, setMarcas] = useState([])
+    useEffect(() => {
+
+        queryGetAll('marcas', setMarcas);
+        }, [])
+
    const opciones = Marcas.map(marca => <option key={marca.id} value={marca.id}>{marca.nombre}</option>)
     return ( 
         <div className="grid col-start-2">
@@ -29,7 +36,7 @@ const FormProducto = ({formik, mode}) => {
         </div>
         <div className="my-5 flex flex-col">
         <label  className="text-amber-50" htmlFor="precio">Marca</label>
-        <select className="text-black" type="select" name="Marca" id="marca" defaultValue={formik.values.marca_id}>
+        <select className="text-black" type="select" name="marca_id" id="marca" onChange={(e)=>{formik.handleChange(e)}}>
             <option value={null}>Seleccionar</option>
             <option value={null}>Sin Marca</option>
             {opciones}

@@ -50,7 +50,7 @@ export const getProductos = (req, res, next) => {
         {
             model: producto_imagenModel,
             as: 'imagenes',
-            attributes: ['image_url']
+            attributes: ['image_url', 'id']
         }
         ]
     }).then(pagesOfProducts => res.status(200).json({
@@ -83,7 +83,7 @@ export const getProductoByMarca = (req, res, next) => {
         {
             model: producto_imagenModel,
             as: 'imagenes',
-            attributes: ['image_url']
+            attributes: ['image_url', 'id']
         }
         ]
     }).then(pagesOfProducts => res.status(200).json({
@@ -103,7 +103,7 @@ export const getProducto = (req, res, next) => {
         {
             model: producto_imagenModel,
             as: 'imagenes',
-            attributes: ['image_url']
+            attributes: ['image_url', 'id']
         }
         ]
     }).then(model => res.status(200).json({

@@ -1,18 +1,19 @@
-import { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import ReactPlaceholder from 'react-placeholder';
 import "react-placeholder/lib/reactPlaceholder.css";
 import Slider from "./Slider";
-import AppContextProvider from "../context/appContext";
 import {TextBlock, RectShape} from 'react-placeholder/lib/placeholders';
 
 
 
-const Card = ({clickeable, id}) => {
-  const imagenes = ["imagenes"]
-const contentLoaded = useContext(AppContextProvider)
-
-
+const Card = ({clickeable, id, name, images, descripcion}) => {
+  const imagenes = images
+const [contentLoaded, setContentLoaded] = useState(false)
+const hideImage = contentLoaded? null: "hidden"
+const setTimeTrue = (e)=>{setTimeout(() => {
+  setContentLoaded(true)
+}, 3000)};
 
 
 const awesomePlaceholder = (
@@ -30,35 +31,46 @@ const awesomePlaceholder = (
 
 
     return (
-      <div>
+      <div >
    {clickeable? 
-    <div className= "">
-   <div className="bg-slate-200 mx-2 my-2 px-2 py-2  shadow-md hover:shadow-lg max-w-xs">
-     
-  
+    <Link to={`/forms?id=${id}&type=productos`}>
+   <div onLoad={setTimeTrue} className="bg-slate-200 mx-2 my-2 px-2 py-2  shadow-md hover:shadow-lg max-w-xs">
+   <div className={hideImage}>
    <Slider imagenes={imagenes}  />
-   <ReactPlaceholder showLoadingAnimation={true} customPlaceholder={awesomePlaceholder}  ready={contentLoaded}>
-     <h1 className="text-center">Titulo ropa</h1>
-     <p className="text-sm text-center"> Lorem ipsum dolor sit amet consectetur </p>
-    </ReactPlaceholder>
-   
    </div>
-   </div> 
-   :
-<Link to={`/forms?id=${id}&type=productos`}>
-   <div className="bg-slate-200 mx-2 my-2 px-2 py-2  shadow-md hover:shadow-lg max-w-xs">
-   <Slider imagenes={imagenes}  />
    <ReactPlaceholder showLoadingAnimation={true} customPlaceholder={awesomePlaceholder}  ready={contentLoaded}>
-     <h1 className="text-center">Titulo ropa</h1>
-     <p className="text-sm text-center"> Lorem ipsum dolor sit amet consectetur </p>
+   <h1 className="text-center text-lg font-bold">{name}</h1>
+     <p className="text-sm text-center"> {descripcion} </p>
      </ReactPlaceholder>
 
    </div>
    </Link> 
+   :
+
+   <div className= "">
+<div onLoad={setTimeTrue} className="bg-slate-200 mx-2 my-2 px-2 py-2  shadow-md hover:shadow-lg max-w-xs">
+  
+<div className={hideImage}>
+<Slider imagenes={imagenes}  />
+</div>
+<ReactPlaceholder showLoadingAnimation={true} customPlaceholder={awesomePlaceholder}  ready={contentLoaded}>
+  <h1 className="text-center text-lg font-bold">{name}</h1>
+  <p className="text-sm text-center"> {descripcion} </p>
+ </ReactPlaceholder>
+ </div>
+</div> 
 }
 </div>
+
+
        
       );
 }
  
 export default Card;
+
+
+
+
+
+

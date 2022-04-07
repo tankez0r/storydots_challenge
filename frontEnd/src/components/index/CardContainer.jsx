@@ -4,17 +4,18 @@ import { queryGetAll  } from "../services/public";
 
 
 const CardContainer = () => {
-const [Cards, setCards] = useState([])
+const [cards, setCards] = useState([])
 
 useEffect(() => {
 
 queryGetAll('productos', setCards);
 }, [])
-console.log(Cards)
 
+const cardMaps = cards.map((card) =>{ return (<Card key={card.id} name={card.nombre} descripcion={card.descripcion} id={card.id} images={card.imagenes} clickeable={false} />)} );
+ 
     return (
          <div className="grid justify-center sm:grid-cols-1  md:grid-cols-3 lg:grid-cols-4 mt-2">
- <Card clickeable={true}/>
+{cardMaps}
     </div> );
 }
  

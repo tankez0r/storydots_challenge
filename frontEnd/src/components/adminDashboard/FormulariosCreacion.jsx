@@ -72,7 +72,7 @@ useState({form:"" ,nombre:"", descripcion:"", precio:0, marca_id:0,
           const {nombre, descripcion, precio,marca_id, url1, url2,url3,logo_imagen,nombreMarca, descripcionMarca} = values;
           if(Schema==='producto'){
             setImgData({url1, url2,url3})
-            setProductoData(marca_id? {nombre, descripcion, precio,marca_id}: {nombre, descripcion, precio})
+            setProductoData(marca_id? {nombre, descripcion, precio, marca_id} : {nombre, descripcion, precio})
           } else if(Schema==='marca')
            { setMarcaData({nombre:nombreMarca,descripcion: descripcionMarca, logo_imagen })
          }
